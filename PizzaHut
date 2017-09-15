@@ -1,0 +1,94 @@
+Rent a car from reachnow 
+Fill gas at a gas station    
+Stop at Starbucks for breakfast
+Use maps for navigation
+Buy ticket to go to the park
+Park car in the parking lot for Rainier visitors
+
+Things:
+
+1) Internet:
+            
+                             Data: ReachNow, Google maps
+                             Behaviour: Find and reserve a car using ReachNow, Navigate to Mt.Rainier using Google maps
+
+2) ReachnowApp:
+
+                            Data: List of cars, details about cars, addresses for car pickup
+                            Behaviour: Search for cars, book a car     
+
+3) GoogleMaps:                       
+        
+                            Data: Directions to reach Mt.Rainier
+                            Behaviour: Navigate to Mt.Rainier
+
+4) Hiker:
+
+                            Data: Name, phone, credit card
+                            Behaviour: Search for cars, book a car, drive, fill gas, buy breakfast, buy tickets
+
+5) GasStation:
+
+                            Data: Gas, Gas pipes used for filling tanks
+                            Behaviour: Fill car tank with required quantity of gas
+
+6) Starbucks:
+                    
+                            Data: Food, Beverages, card swiping machine
+                            Behaviour: Prepare meal/drink, collect money for the purchase
+
+7) CreditCard:
+
+                            Data: Number, name, company, expiry, security code
+
+8) CreditCardCompany:
+
+                            Behaviour: Authorize transaction
+
+9) RainierTicketCounter:
+
+                            Data: Tickets/passes
+                            Behaviour: Issue tickets for visitors entering the Mt.Rainier National Park
+
+
+Pseudo Code
+
+HikingToRainier:
+            
+            Internet internet    
+            Hiker hiker
+            ReachnowApp reachnow
+            GoogleMaps maps            
+            GasStation chevron
+            Starbucks starbucks
+            CreditCard creditcard
+            CreditCardCompany visa
+            RainierTicketCounter counter
+
+
+            If internet.isAvailable(
+
+                        hiker.FindCarInReachNow -> Open app, type of car, price : List of cars
+                        reachnow.ReserveCar -> List of cars: myCar                    
+                        If myCar is not Empty 
+                                  hiker.PickUpmyCarAndDrive                                              
+                        hiker.FillGasAtGasStation -> Quantity of Gas, creditcard : Tank filled with required quantity of gas
+                        hiker.GetBreakfast -> food, drink, creditcard : ordered breakfast
+                        starbucks.ProcessTheOrder -> prepare the ordered items : Breakfast purchased                     
+                        hiker.FindRouteInGoogleMaps -> Open App, enter destination : List of routes
+                        hiker.SelectBestRoute -> List of routes : route_1
+                        myRoute = route_1                        
+                        maps.NavigateToDestination -> myRoute : Navigation started
+                        If counter isOpen 
+                            hiker.BuyTicketsToEnterRainier -> Number of persons, creditcard : Tickets purchased
+                            hiker.ContinueDrivingToParkingArea -> myRoute: Reaches parking area
+                            hiker.ParkCarAndStartHiking
+                        Else
+                            hiker.CannotProceedToRainier
+                        End If
+                        Else
+                                hiker.NoCarToDrive
+                        End If 
+             Else                    
+                        BrowseInternetLater
+             End If 
